@@ -24,8 +24,6 @@ public class clientAspect {
 	public void afterReturningAdvice(JoinPoint joinPoint, Reply reply)  
 	{  
 		response.setHeader("userData",reply.getjsonStringFromMap());
-		System.out.println("After Returing method:"+joinPoint.getSignature());  
-
 	}  
 	
 }
