@@ -37,9 +37,12 @@ public class ClientTbl {
 	@Column(name="NEXT_API_NO")
 	public int nextAPINo;
 	
+	@Column(name="DOMAIN_NAME",unique=true,length=50)
+	public String domainName;
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(clientEmailId, clientId, clientName, clientPayment, clientPhoneNo, password);
+		return Objects.hash(clientEmailId, clientId, clientName, clientPayment, clientPhoneNo, password,domainName);
 	}
 
 	@Override
@@ -111,6 +114,14 @@ public class ClientTbl {
 
 	public void setNextAPINo(int nextAPINo) {
 		this.nextAPINo = nextAPINo;
+	}
+
+	public String getDomainName() {
+		return domainName;
+	}
+
+	public void setDomainName(String domainName) {
+		this.domainName = domainName;
 	}
 
 	

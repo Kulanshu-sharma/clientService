@@ -17,4 +17,8 @@ public interface SAGProxy {
 	
 	@PutMapping("/sag/unblockSubscriptions/{apiId}")
 	public Response unblockNewSubscriptions(@RequestHeader("accessKey") String accessKey,@PathVariable(name="apiId") int apiId);
+	
+	@PutMapping("/sag/setApiPrice/apiId/{apiId}/amount/{amount}")
+	public Response setorUpdateApiPrice(@RequestHeader("accessKey") String accessKey,@PathVariable(name="apiId") int apiId,
+																					 @PathVariable(name="amount") float amount);
 }

@@ -50,4 +50,10 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 		ExceptionFieldsDTO body = new ExceptionFieldsDTO(LocalDateTime.now(),Messages.Exceptions.PHONE_EMAIL_ALREADY_EXIST);
         return new ResponseEntity<>(body, HttpStatus.ALREADY_REPORTED);
 	}
+	
+	@ExceptionHandler(NoCompanyDomainNameRecieved.class)
+	public ResponseEntity<Object> handleNoClientNameRecieved(NoCompanyDomainNameRecieved ex) {
+		ExceptionFieldsDTO body = new ExceptionFieldsDTO(LocalDateTime.now(),Messages.Exceptions.NO_DOMAIN_NAME_RECIEVED);
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+	}
 }

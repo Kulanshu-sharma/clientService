@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.voteroid.clientService.dtos.Reply;
 import com.voteroid.clientService.dtos.Response;
+import com.voteroid.clientService.entities.ClientTbl;
+import com.voteroid.clientService.repositories.ClientTblRepository;
 import com.voteroid.clientService.repositories.SAGProxy;
 
 @RestController
@@ -16,6 +18,9 @@ public class HomeController {
 
 	@Autowired
 	SAGProxy proxy;
+	
+	@Autowired
+	ClientTblRepository repository;
 	
 	@GetMapping("/client/home")
 	public Reply retriveLimitConfiguration(@RequestHeader("userData") String data) {
@@ -37,5 +42,22 @@ public class HomeController {
 		Response response = proxy.unblockNewSubscriptions("hwhps1427k",apiId);
 		reply.setData(response);
 		return reply;	
+	}
+	
+	@PutMapping("/client/setApiPrice/apiId/{apiId}/amount/{amount}")
+	public Reply setorUpdateApiPrice(@RequestHeader("userData") String data,@PathVariable(name="apiId") int apiId,
+			                                                                @PathVariable(name="amount") float amount) {
+		Reply reply = new Reply(data);
+		Response response = proxy.setorUpdateApiPrice("hwhps1427k",apiId,amount);
+		reply.setData(response);
+		return reply;	
+	}
+	
+	@GetMapping("/client/getClientId/{domainName}")
+	public int getClientIdBydomainName(@PathVariable("domainName") String domainName) {
+		ClientTbl clientTbl = repository.findByDomainName(domainName);
+		if(clientTbl==null)
+			return 0;
+		return clientTbl.getClientId();
 	}
 }

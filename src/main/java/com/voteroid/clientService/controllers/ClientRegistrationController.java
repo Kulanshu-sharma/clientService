@@ -15,6 +15,7 @@ import com.voteroid.clientService.exceptions.NoClientInformationRecieved;
 import com.voteroid.clientService.exceptions.NoClientNameRecieved;
 import com.voteroid.clientService.exceptions.NoClientPasswordRecieved;
 import com.voteroid.clientService.exceptions.NoClientPhoneNoRecieved;
+import com.voteroid.clientService.exceptions.NoCompanyDomainNameRecieved;
 import com.voteroid.clientService.exceptions.PhoneNoOrEmailIdAlreadyExist;
 import com.voteroid.clientService.repositories.ClientTblRepository;
 
@@ -38,6 +39,8 @@ public class ClientRegistrationController {
 			throw new NoClientPhoneNoRecieved();
 		if(clientTbl.getClientEmailId()==null || clientTbl.getClientEmailId().isEmpty())
 			throw new NoClientEmailIdRecieved();
+		if(clientTbl.getDomainName()==null || clientTbl.getDomainName().isEmpty() || clientTbl.getDomainName().contains(" "))
+			throw new NoCompanyDomainNameRecieved();
 		clientTbl.setClientPayment(0);
 		clientTbl.setNextAPINo(1);
 		try {
