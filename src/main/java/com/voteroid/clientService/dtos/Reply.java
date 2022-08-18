@@ -11,6 +11,7 @@ public class Reply {
 
 	private Map<String,Object> session = null;
 	private Object data = null;
+	private boolean isAllowed = true;
 	
 	public Reply(String userData) {
 		this.session = (new BasicJsonParser()).parseMap(userData);
@@ -40,6 +41,16 @@ public class Reply {
 	public void setData(Object data) {
 		this.data = data;
 	}
+
+	public boolean isAllowed() {
+		return isAllowed;
+	}
+
+	public void setAllowed(boolean isAllowed) {
+		this.isAllowed = isAllowed;
+	}
+	
+	
 	
 	
 }

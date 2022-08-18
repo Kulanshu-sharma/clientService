@@ -39,6 +39,7 @@ public class ClientRegistrationController {
 		if(clientTbl.getClientEmailId()==null || clientTbl.getClientEmailId().isEmpty())
 			throw new NoClientEmailIdRecieved();
 		clientTbl.setClientPayment(0);
+		clientTbl.setNextAPINo(1);
 		try {
 		   ClientTbl cliTbl = repository.save(clientTbl);
 		   clientInfoDTO.setClientId(cliTbl.getClientId());

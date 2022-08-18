@@ -15,7 +15,7 @@ public class ClientTbl {
 
 	@Id
 	@GeneratedValue(generator = "client-sequence-generator")
-	@SequenceGenerator(name = "client-sequence-generator", sequenceName = "ClientIdSequence", initialValue = 2, allocationSize = 100)
+	@SequenceGenerator(name = "client-sequence-generator", sequenceName = "ClientIdSequence", initialValue = 100, allocationSize = 100)
 	@Column(name="CLIENT_ID")
 	public int clientId;
 	
@@ -33,6 +33,9 @@ public class ClientTbl {
 
 	@Column(name="PASSWORD",length=100)
 	public String password;
+	
+	@Column(name="NEXT_API_NO")
+	public int nextAPINo;
 	
 	@Override
 	public int hashCode() {
@@ -101,6 +104,15 @@ public class ClientTbl {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public int getNextAPINo() {
+		return nextAPINo;
+	}
+
+	public void setNextAPINo(int nextAPINo) {
+		this.nextAPINo = nextAPINo;
+	}
+
 	
 	
 
