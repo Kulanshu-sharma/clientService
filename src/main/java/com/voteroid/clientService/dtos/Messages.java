@@ -10,6 +10,7 @@ public interface Messages {
 		public static final String NO_CLIENT_EMAIL_ID_RECIEVED = "No Client Email Id Recieved!!!";
 		public static final String NO_CLIENT_PASSWORD_RECIEVED = "No Client Password Recieved!!!";
 		public static final String NO_DOMAIN_NAME_RECIEVED = "No Company Domain Name Recieved!!!";
+		public static final String INVALID_TOKEN = "Invalid Access for this api id!!!";
 	}
 	
 	interface loginErrors{

@@ -34,7 +34,7 @@ public class LoginController {
 		}
 		else {
 			reply.setAllowed(true);
-			reply.setAttribute(Constants.USER_ID,clientTbl.getClientId());
+			reply.setAttribute(Constants.CLIENT_ID,clientTbl.getClientId());
 			reply.setData(clientTblResponse);
 		}
 		return reply;

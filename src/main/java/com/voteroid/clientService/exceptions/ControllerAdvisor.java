@@ -56,4 +56,10 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 		ExceptionFieldsDTO body = new ExceptionFieldsDTO(LocalDateTime.now(),Messages.Exceptions.NO_DOMAIN_NAME_RECIEVED);
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(InvalidAccess.class)
+	public ResponseEntity<Object> handleNoClientNameRecieved(InvalidAccess ex) {
+		ExceptionFieldsDTO body = new ExceptionFieldsDTO(LocalDateTime.now(),Messages.Exceptions.INVALID_TOKEN);
+        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+	}
 }
