@@ -23,6 +23,6 @@ public interface SAGProxy {
 	public Response setorUpdateApiPrice(@RequestHeader("accessKey") String accessKey,@PathVariable(name="apiId") int apiId,
 																					 @PathVariable(name="amount") float amount);
 	@GetMapping("/sag/fetchTokens/client")
-	public Response fetchTokensForClientId(@RequestHeader("accessKey") String accessKey,@RequestParam int clientId);
+	public Response fetchTokensForClientId(@RequestHeader("accessKey") String accessKey,@RequestParam("clientId") int clientId);
 	
 }

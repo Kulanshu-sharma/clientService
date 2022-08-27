@@ -11,6 +11,11 @@ public interface Messages {
 		public static final String NO_CLIENT_PASSWORD_RECIEVED = "No Client Password Recieved!!!";
 		public static final String NO_DOMAIN_NAME_RECIEVED = "No Company Domain Name Recieved!!!";
 		public static final String INVALID_TOKEN = "Invalid Access for this api id!!!";
+		public static final String MAIL_NOT_SENT = "User can't be registered as Verification Mail Not Sent Successfully!!!";
+		public static final String NO_CLIENT_COUNTRY_RECIEVED = "No Client Country Recieved!!!";
+		public static final String INVALID_CLIENT_ID = "Entered Client Id is Not Registered";
+		public static final String INVALID_PASSWORD = "Entered Password is Incorrect";
+		public static final String VERIFICATION_PENDING = "Client E-Mail Verification is Still Pending!!!";
 	}
 	
 	interface loginErrors{

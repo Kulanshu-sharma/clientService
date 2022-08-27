@@ -45,6 +45,12 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(NoClientCountryRecieved.class)
+	public ResponseEntity<Object> handleNoClientNameRecieved(NoClientCountryRecieved ex) {
+		ExceptionFieldsDTO body = new ExceptionFieldsDTO(LocalDateTime.now(),Messages.Exceptions.NO_CLIENT_COUNTRY_RECIEVED);
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+	}
+	
 	@ExceptionHandler(PhoneNoOrEmailIdAlreadyExist.class)
 	public ResponseEntity<Object> handleNoClientNameRecieved(PhoneNoOrEmailIdAlreadyExist ex) {
 		ExceptionFieldsDTO body = new ExceptionFieldsDTO(LocalDateTime.now(),Messages.Exceptions.PHONE_EMAIL_ALREADY_EXIST);
@@ -61,5 +67,29 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 	public ResponseEntity<Object> handleNoClientNameRecieved(InvalidAccess ex) {
 		ExceptionFieldsDTO body = new ExceptionFieldsDTO(LocalDateTime.now(),Messages.Exceptions.INVALID_TOKEN);
         return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+	}
+	
+	@ExceptionHandler(MailNotSent.class)
+	public ResponseEntity<Object> handleNoMailSent(MailNotSent ex) {
+		ExceptionFieldsDTO body = new ExceptionFieldsDTO(LocalDateTime.now(),Messages.Exceptions.MAIL_NOT_SENT);
+        return new ResponseEntity<>(body, HttpStatus.SERVICE_UNAVAILABLE);
+	}
+	
+	@ExceptionHandler(InvalidClientId.class)
+	public ResponseEntity<Object> handleInvalidClientId(InvalidClientId ex) {
+		ExceptionFieldsDTO body = new ExceptionFieldsDTO(LocalDateTime.now(),Messages.Exceptions.INVALID_CLIENT_ID);
+        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+	}
+	
+	@ExceptionHandler(InvalidPassword.class)
+	public ResponseEntity<Object> handleInvalidPassword(InvalidPassword ex) {
+		ExceptionFieldsDTO body = new ExceptionFieldsDTO(LocalDateTime.now(),Messages.Exceptions.INVALID_PASSWORD);
+        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+	}
+	
+	@ExceptionHandler(VerificationPending.class)
+	public ResponseEntity<Object> handleVerificationPending(VerificationPending ex) {
+		ExceptionFieldsDTO body = new ExceptionFieldsDTO(LocalDateTime.now(),Messages.Exceptions.VERIFICATION_PENDING);
+        return new ResponseEntity<>(body, HttpStatus.PRECONDITION_REQUIRED);
 	}
 }

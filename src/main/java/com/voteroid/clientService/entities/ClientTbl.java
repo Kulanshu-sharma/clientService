@@ -15,7 +15,7 @@ public class ClientTbl {
 
 	@Id
 	@GeneratedValue(generator = "client-sequence-generator")
-	@SequenceGenerator(name = "client-sequence-generator", sequenceName = "ClientIdSequence", initialValue = 100, allocationSize = 100)
+	@SequenceGenerator(name = "client-sequence-generator", sequenceName = "ClientIdSequence", initialValue = 1000, allocationSize = 100)
 	@Column(name="CLIENT_ID")
 	public int clientId;
 	
@@ -31,7 +31,10 @@ public class ClientTbl {
 	@Column(name="PAYMENT")
 	public float clientPayment;
 
-	@Column(name="PASSWORD",length=100)
+	@Column(name="COUNTRY",length=100)
+	public String country;
+	
+	@Column(name="PASSWORD",length=200)
 	public String password;
 	
 	@Column(name="NEXT_API_NO")
@@ -40,9 +43,12 @@ public class ClientTbl {
 	@Column(name="DOMAIN_NAME",unique=true,length=50)
 	public String domainName;
 	
+	@Column(name="VERIFIED")
+    public boolean verified;
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(clientEmailId, clientId, clientName, clientPayment, clientPhoneNo, password,domainName);
+		return Objects.hash(clientEmailId, clientId, clientName, clientPayment, clientPhoneNo, country,domainName,verified);
 	}
 
 	@Override
@@ -100,12 +106,12 @@ public class ClientTbl {
 		this.clientPayment = clientPayment;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getCountry() {
+		return country;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public int getNextAPINo() {
@@ -124,8 +130,22 @@ public class ClientTbl {
 		this.domainName = domainName;
 	}
 
-	
-	
+	public boolean isVerified() {
+		return verified;
+	}
 
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 	
 }
