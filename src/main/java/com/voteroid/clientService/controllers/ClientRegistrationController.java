@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.voteroid.clientService.configurations.ApplicationPropertiesConfiguration;
 import com.voteroid.clientService.configurations.MailUtility;
 import com.voteroid.clientService.dtos.ClientInfoDTO;
+import com.voteroid.clientService.dtos.Constants;
 import com.voteroid.clientService.dtos.Mail;
 import com.voteroid.clientService.dtos.Reply;
 import com.voteroid.clientService.dtos.Response;
@@ -147,6 +149,13 @@ public class ClientRegistrationController {
 		response.setMessage("E-Mail Verified and Password Generated Successfully");
 		response.setSuccessfull(true);
 		return response;
+	}
+	
+	@GetMapping("/client/registration")
+	public Reply clientRegistration(@RequestHeader(Constants.TOKEN_DATA) String data,@RequestParam(Constants.CLIENT_ID) int clientId) {
+		Reply reply = new Reply(data);
+		//ClientTbl clientTbl = repository. 
+		return reply;
 	}
 
 }
