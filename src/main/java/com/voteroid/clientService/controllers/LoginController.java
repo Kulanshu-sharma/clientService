@@ -37,9 +37,9 @@ public class LoginController {
 			throw new InvalidClientId();
 		}else if(!clientTblResponse.isVerified()) {
 			throw new VerificationPending();
-		}//else if(!encoder.matches(clientTbl.getPassword(),clientTblResponse.getPassword())) {
-			//throw new InvalidPassword();
-		//}
+		}else if(!encoder.matches(clientTbl.getPassword(),clientTblResponse.getPassword())) {
+			throw new InvalidPassword();
+		}
 		else {
 			reply.setAllowed(true);
 			reply.setAttribute(Constants.CLIENT_ID,clientTbl.getClientId());
